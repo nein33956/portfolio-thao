@@ -31,7 +31,7 @@ export const SITE = {
   school: "ĐH Y Dược - Đại học Quốc gia Hà Nội",
   year: "2026",
   email: "[email@cua.ban]",
-  hobbies: "Hát, nhảy, du lịch",
+  hobbies: "Du lịch, foodtour và chơi game",
 };
 
 export const projects: Project[] = [
@@ -94,7 +94,7 @@ export const projects: Project[] = [
       "Tạo bảng tổng hợp các nguồn kèm đánh giá & xếp hạng độ tin cậy.",
       "Viết báo cáo 3-4 trang kèm danh mục tài liệu tham khảo theo định dạng Harvard.",
     ],
-    tools: ["Google Scholar", "Microsoft Academic", "Định dạng Harvard"],
+    tools: ["Gemini", "NotebookLM", "ChatGPT"],
     lmsUrl: "",
     submission: {
       fileName: "u-xo-tu-cung-nop-ai.docx",
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       "Ghi nhật ký minh chứng: ảnh chụp màn hình thể hiện rõ tên tài khoản / phần đóng góp cá nhân.",
       "Viết báo cáo cá nhân 4-5 trang: mô tả tác vụ, phân tích hiệu quả công cụ, thách thức & cách giải quyết.",
     ],
-    tools: ["Trello", "Google Docs", "Google Drive", "Microsoft Teams"],
+    tools: ["CapCut Pro", "Notion", "Gemini"],
     lmsUrl: "",
     submission: {
       fileName: "minh-chung-dong-gop-vao-bao-tap-nhom.docx",
@@ -198,7 +198,7 @@ export const projects: Project[] = [
       "Viết phân tích vai trò của AI: điểm mạnh & hạn chế, cách AI thay đổi quy trình sáng tạo, và các vấn đề đạo đức cần cân nhắc.",
       "Nộp báo cáo 4-5 trang kèm sản phẩm cuối, ảnh chụp quá trình dùng AI và các phiên bản trung gian.",
     ],
-    tools: ["ChatGPT", "DALL·E", "Canva AI", "Adobe Firefly"],
+    tools: ["NotebookLM", "Gemini", "ChatGPT"],
     lmsUrl: "",
     submission: {
       fileName: "su-dung-ai-tao-sinh-de-ho-tro-sang-tao-noi-dung.docx",

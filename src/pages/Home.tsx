@@ -146,8 +146,16 @@ export default function Home() {
             {/* Thẻ hồ sơ + avatar blob */}
             <Reveal>
               <div className="card-surface p-8 text-center">
-                <div className="mx-auto grid h-32 w-32 animate-blob place-items-center bg-candy text-5xl text-white shadow-glow">
-                  🌸
+                <div className="relative mx-auto h-32 w-32 animate-blob overflow-hidden bg-candy shadow-glow">
+                  <span className="absolute inset-0 grid place-items-center text-5xl text-white">🌸</span>
+                  <img
+                    src="/img/thao.jpg"
+                    alt={SITE.fullName}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-bold text-ink">{SITE.fullName}</h3>
                 <p className="mt-1 text-sm text-ink-muted">{SITE.major}</p>
