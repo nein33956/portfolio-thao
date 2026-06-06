@@ -84,7 +84,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.05 }}
             className="mx-auto mt-7 max-w-4xl font-display text-5xl font-bold leading-[1.08] text-ink sm:text-7xl"
           >
-            Xin chào, mình là <br />
+            Hello, I'm <br />
             <span className="gradient-text">{SITE.fullName}</span>
           </motion.h1>
 
@@ -130,26 +130,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== GIỚI THIỆU BẢN THÂN ===== */}
+      {/* ===== GIỚI THIỆU — Hồ sơ ===== */}
       <section className="py-16">
         <div className="container-x">
-          <Reveal>
-            <SectionHead kicker="Về mình" title="Giới thiệu bản thân" />
-          </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {goals.map((g, i) => (
-              <Reveal key={g.title} delay={i * 0.1}>
-                <div className="card-surface h-full p-7 transition-transform hover:-translate-y-1.5">
-                  <div
-                    className={`grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${g.grad} text-white shadow-soft`}
-                  >
-                    <g.icon className="h-7 w-7" />
-                  </div>
-                  <h3 className="mt-5 font-display text-xl font-bold text-ink">{g.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{g.body}</p>
+          <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+            {/* Thẻ hồ sơ + avatar blob */}
+            <Reveal>
+              <div className="card-surface p-8 text-center">
+                <div className="mx-auto grid h-32 w-32 animate-blob place-items-center bg-candy text-5xl text-white shadow-glow">
+                  🌸
                 </div>
-              </Reveal>
-            ))}
+                <h3 className="mt-5 font-display text-2xl font-bold text-ink">{SITE.fullName}</h3>
+                <p className="mt-1 text-sm text-ink-muted">{SITE.major}</p>
+                <p className="text-sm text-ink-muted">{SITE.school}</p>
+                <div className="mt-4 flex flex-wrap justify-center gap-2">
+                  {SITE.hobbies.split(",").map((h) => (
+                    <span key={h} className="chip">{h.trim()}</span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Bio + mục tiêu/định hướng */}
+            <Reveal delay={0.1}>
+              <span className="text-sm font-bold uppercase tracking-[0.2em] text-brand-500">Về mình</span>
+              <h2 className="mt-2 font-display text-3xl font-bold text-ink sm:text-4xl">
+                Đôi nét giới thiệu
+              </h2>
+              <p className="mt-4 leading-relaxed text-ink-soft">
+                Mình là {SITE.fullName}, sinh viên {SITE.major}. Với mình, môn Năng lực số là dịp
+                để rèn một lối tư duy và làm việc trong môi trường số: hiệu quả, cẩn thận và có
+                trách nhiệm. 💕
+              </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl bg-brand-50/70 p-5">
+                  <div className="flex items-center gap-2 font-bold text-brand-600">
+                    <Target className="h-4 w-4" /> Mục tiêu học tập
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{goals[1].body}</p>
+                </div>
+                <div className="rounded-2xl bg-grape-100/70 p-5">
+                  <div className="flex items-center gap-2 font-bold text-grape-600">
+                    <Rocket className="h-4 w-4" /> Định hướng
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">{goals[2].body}</p>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -171,16 +198,18 @@ export default function Home() {
                   thành về năng lực số trong suốt môn học.
                 </p>
               </div>
-              <ul className="space-y-3">
+              <div className="grid gap-3 sm:grid-cols-2">
                 {portfolioGoals.map((g, i) => (
                   <Reveal key={i} delay={i * 0.08}>
-                    <li className="flex items-start gap-3 rounded-2xl bg-brand-50/70 p-4">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-brand-500" />
-                      <span className="text-sm text-ink-soft">{g}</span>
-                    </li>
+                    <div className="h-full rounded-2xl bg-brand-50/70 p-4">
+                      <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-brand-400 to-grape-500 font-display text-sm font-bold text-white shadow-soft">
+                        {i + 1}
+                      </span>
+                      <p className="mt-3 text-sm leading-snug text-ink-soft">{g}</p>
+                    </div>
                   </Reveal>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -192,33 +221,31 @@ export default function Home() {
           <Reveal>
             <SectionHead kicker="Dự án nổi bật" title="6 năng lực · 6 dự án" />
           </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
             {projects.map((p, i) => {
               const Icon = getIcon(p.icon);
               return (
-                <Reveal key={p.id} delay={(i % 3) * 0.1}>
+                <Reveal key={p.id} delay={(i % 2) * 0.08}>
                   <Link
                     to={`/du-an/${p.slug}`}
-                    className="card-surface group flex h-full flex-col overflow-hidden transition-transform hover:-translate-y-1.5"
+                    className="card-surface group flex items-center gap-4 p-5 transition-transform hover:-translate-y-1"
                   >
-                    <div className="flex items-center justify-between bg-gradient-to-r from-brand-100 to-grape-100 px-6 py-5">
-                      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-brand-600 shadow-soft">
-                        <Icon className="h-6 w-6" />
-                      </span>
-                      <span className="font-display text-3xl font-bold text-white drop-shadow">
+                    <span className="relative grid h-16 w-16 flex-none place-items-center rounded-2xl bg-gradient-to-br from-brand-400 to-grape-500 text-white shadow-soft">
+                      <Icon className="h-7 w-7" />
+                      <span className="absolute -bottom-1.5 -right-1.5 grid h-6 w-6 place-items-center rounded-full bg-white font-display text-[11px] font-bold text-brand-600 shadow-soft">
                         {String(p.id).padStart(2, "0")}
                       </span>
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-brand-500">
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-brand-500">
                         {p.task}
                       </span>
-                      <h3 className="mt-1 font-display text-lg font-bold text-ink">{p.title}</h3>
-                      <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{p.short}</p>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-brand-600 transition-all group-hover:gap-2.5">
-                        Xem chi tiết <ArrowRight className="h-4 w-4" />
-                      </span>
+                      <h3 className="font-display text-base font-bold leading-tight text-ink">
+                        {p.title}
+                      </h3>
+                      <p className="mt-0.5 line-clamp-1 text-xs text-ink-muted">{p.short}</p>
                     </div>
+                    <ArrowRight className="h-4 w-4 flex-none text-brand-400 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Reveal>
               );
@@ -232,20 +259,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== CTA liêm chính ===== */}
-      <section className="pb-10 pt-4">
+      {/* ===== Cam kết — thẻ trắng có con dấu gradient ===== */}
+      <section className="pb-12 pt-4">
         <div className="container-x">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[2rem] bg-candy p-10 text-center text-white sm:p-14">
-              <ShieldCheck className="relative mx-auto h-12 w-12" />
-              <h2 className="relative mt-4 font-display text-3xl font-bold">
-                Cam kết liêm chính học thuật
-              </h2>
-              <p className="relative mx-auto mt-3 max-w-2xl text-white/90">
-                Toàn bộ Portfolio được thực hiện trung thực. Mọi nội dung tham khảo và công cụ AI
-                đều được ghi nguồn rõ ràng ở từng dự án.
-              </p>
-              <Heart className="relative mx-auto mt-4 h-5 w-5" fill="currentColor" />
+            <div className="card-surface relative mx-auto max-w-3xl overflow-hidden p-10 text-center sm:p-12">
+              <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-brand-100 blur-2xl" />
+              <div className="absolute -bottom-16 -left-16 h-44 w-44 rounded-full bg-grape-100 blur-2xl" />
+              <div className="relative">
+                <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-candy text-white shadow-glow">
+                  <ShieldCheck className="h-8 w-8" />
+                </span>
+                <h2 className="mt-5 font-display text-2xl font-bold text-ink sm:text-3xl">
+                  Cam kết <span className="gradient-text">liêm chính học thuật</span>
+                </h2>
+                <p className="mx-auto mt-3 max-w-xl text-ink-soft">
+                  Toàn bộ Portfolio được thực hiện trung thực. Mọi nội dung tham khảo và công cụ AI
+                  đều được ghi nguồn rõ ràng ở từng dự án.
+                </p>
+                <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-bold text-brand-600">
+                  <Heart className="h-4 w-4" fill="currentColor" /> {SITE.fullName}
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>

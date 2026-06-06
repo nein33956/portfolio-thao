@@ -28,31 +28,34 @@ export default function Projects() {
       {/* Grid */}
       <section className="pb-16">
         <div className="container-x">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto max-w-4xl space-y-6">
             {projects.map((p, i) => {
               const Icon = getIcon(p.icon);
+              const reverse = i % 2 === 1;
               return (
-                <Reveal key={p.id} delay={(i % 3) * 0.1}>
+                <Reveal key={p.id} delay={(i % 2) * 0.06}>
                   <Link
                     to={`/du-an/${p.slug}`}
-                    className="card-surface group flex h-full flex-col overflow-hidden transition-transform hover:-translate-y-1.5"
+                    className="card-surface group flex flex-col overflow-hidden transition-transform hover:-translate-y-1 sm:flex-row"
                   >
-                    <div className="flex items-center justify-between bg-gradient-to-r from-brand-100 via-grape-100 to-peach-100 px-6 py-6">
-                      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-brand-600 shadow-soft">
-                        <Icon className="h-6 w-6" />
-                      </span>
-                      <span className="font-display text-4xl font-bold text-white drop-shadow">
+                    <div
+                      className={`flex items-center justify-center gap-4 bg-candy p-8 text-white sm:w-[34%] ${
+                        reverse ? "sm:order-2" : ""
+                      }`}
+                    >
+                      <Icon className="h-10 w-10" />
+                      <span className="font-display text-5xl font-bold drop-shadow">
                         {String(p.id).padStart(2, "0")}
                       </span>
                     </div>
-                    <div className="flex flex-1 flex-col p-6">
+                    <div className="flex flex-1 flex-col p-7">
                       <span className="text-[11px] font-bold uppercase tracking-wider text-brand-500">
                         {p.task}
                       </span>
-                      <h3 className="mt-1 font-display text-lg font-bold text-ink">{p.title}</h3>
-                      <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{p.short}</p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {p.tools.slice(0, 2).map((t) => (
+                      <h3 className="mt-1 font-display text-xl font-bold text-ink">{p.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ink-soft">{p.short}</p>
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {p.tools.slice(0, 3).map((t) => (
                           <span
                             key={t}
                             className="rounded-full bg-brand-50 px-2.5 py-0.5 text-[11px] font-semibold text-brand-600"

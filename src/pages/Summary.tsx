@@ -37,7 +37,7 @@ export default function Summary() {
           <div className="mx-auto max-w-3xl space-y-6">
             <Reveal>
               <Card icon={Sprout} grad="from-brand-400 to-brand-600" title="Trải nghiệm & cảm nhận">
-                <div className="space-y-3 text-sm leading-relaxed text-ink-soft">
+                <div className="space-y-3 rounded-2xl border-l-4 border-brand-300 bg-brand-50/40 p-5 text-sm leading-relaxed text-ink-soft">
                   <p>
                     Quá trình làm Portfolio là một hành trình thật thú vị. Khi mới bắt đầu, mình
                     khá lúng túng vì nghĩ "năng lực số" chỉ là biết dùng máy tính. Nhưng càng đi
@@ -55,7 +55,7 @@ export default function Summary() {
 
             <Reveal>
               <Card icon={Brain} grad="from-grape-400 to-grape-600" title="Kiến thức & kỹ năng quan trọng nhất">
-                <div className="space-y-3">
+                <div className="grid gap-3 sm:grid-cols-2">
                   {projects.map((p) => {
                     const Icon = getIcon(p.icon);
                     return (
@@ -63,8 +63,9 @@ export default function Summary() {
                         <span className="grid h-8 w-8 flex-none place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-grape-500 text-white">
                           <Icon className="h-4 w-4" />
                         </span>
-                        <p className="pt-1 text-sm text-ink-soft">
-                          <b className="text-ink">{p.title}</b> — {p.short}
+                        <p className="text-sm leading-snug text-ink-soft">
+                          <b className="text-ink">{p.title}</b>
+                          <span className="mt-0.5 block text-xs text-ink-muted">{p.short}</span>
                         </p>
                       </div>
                     );
@@ -98,11 +99,11 @@ export default function Summary() {
 
             <Reveal>
               <Card icon={BarChart3} grad="from-brand-400 to-grape-500" title="Tự đánh giá bản thân">
-                <div className="space-y-2.5">
+                <div className="grid gap-2.5 sm:grid-cols-2">
                   {skills.map((s) => (
                     <div
                       key={s.name}
-                      className="flex items-center justify-between rounded-2xl bg-brand-50/60 px-4 py-2.5"
+                      className="flex items-center justify-between gap-2 rounded-2xl bg-brand-50/60 px-4 py-2.5"
                     >
                       <span className="text-sm font-semibold text-ink-soft">{s.name}</span>
                       <span

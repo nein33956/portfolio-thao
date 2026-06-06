@@ -26,12 +26,12 @@ export type Project = {
 };
 
 export const SITE = {
-  fullName: "[Họ và tên Thảo]",
+  fullName: "Nguyễn Phương Thảo",
   major: "Ngành Y Khoa",
   school: "ĐH Y Dược - Đại học Quốc gia Hà Nội",
   year: "2026",
   email: "[email@cua.ban]",
-  hobbies: "[sở thích của Thảo]",
+  hobbies: "Hát, nhảy, du lịch",
 };
 
 export const projects: Project[] = [
