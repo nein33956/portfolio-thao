@@ -32,11 +32,14 @@ export default function ProjectDetail() {
   const next = projects[index + 1];
   const isPdf = p.submission?.fileUrl.toLowerCase().endsWith(".pdf");
   // Link "Xem bài": nếu là PDF thì mở qua Google Viewer để xem inline (tránh bị tải về)
-  const viewHref = p.viewUrl
-    ? p.viewUrl.toLowerCase().endsWith(".pdf")
-      ? `https://docs.google.com/viewer?url=${encodeURIComponent(p.viewUrl)}&embedded=true`
-      : p.viewUrl
-    : "";
+  const lowerView = p.viewUrl ? p.viewUrl.toLowerCase() : "";
+  const viewHref = !p.viewUrl
+    ? ""
+    : lowerView.endsWith(".pdf")
+    ? `https://docs.google.com/viewer?url=${encodeURIComponent(p.viewUrl)}&embedded=true`
+    : lowerView.endsWith(".docx") || lowerView.endsWith(".doc")
+    ? `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(p.viewUrl)}`
+    : p.viewUrl;
 
   return (
     <>

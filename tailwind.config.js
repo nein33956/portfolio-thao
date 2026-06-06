@@ -52,7 +52,7 @@ export default {
         soft: "0 8px 24px -10px rgba(189,19,96,0.18)",
       },
       backgroundImage: {
-        "candy": "linear-gradient(135deg, #fb6aa6 0%, #c084fc 60%, #fdba74 120%)",
+        "candy": "linear-gradient(135deg, #f43f8a 0%, #a855f7 55%, #fb7a3c 120%)",
       },
       keyframes: {
         floaty: {

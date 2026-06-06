@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   CheckCircle2,
   Heart,
+  Calendar,
 } from "lucide-react";
 import Aurora from "../components/Aurora";
 import Reveal from "../components/Reveal";
@@ -17,10 +18,10 @@ import { projects, SITE } from "../data/projects";
 import { getIcon } from "../lib/icons";
 
 const stats = [
-  { big: "06", lbl: "Dự án thành phần" },
-  { big: "06", lbl: "Năng lực cốt lõi" },
-  { big: "100%", lbl: "Trích nguồn minh bạch" },
-  { big: "A+", lbl: "Mục tiêu chất lượng" },
+  { big: "6", lbl: "Dự án thực hành", icon: FolderKanban, tint: "bg-brand-50", ic: "from-brand-400 to-brand-600" },
+  { big: "100%", lbl: "Bài đã nộp", icon: CheckCircle2, tint: "bg-grape-100/60", ic: "from-grape-400 to-grape-600" },
+  { big: "12+", lbl: "Công cụ & AI đã dùng", icon: Sparkles, tint: "bg-peach-100/60", ic: "from-peach-300 to-brand-400" },
+  { big: "2026", lbl: "Năm hoàn thành", icon: Calendar, tint: "bg-brand-50", ic: "from-brand-400 to-grape-500" },
 ];
 
 const goals = [
@@ -121,9 +122,17 @@ export default function Home() {
             className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4"
           >
             {stats.map((s) => (
-              <div key={s.lbl} className="card-surface px-4 py-6 text-center">
-                <div className="font-display text-3xl font-bold gradient-text">{s.big}</div>
-                <div className="mt-1 text-xs font-semibold text-ink-muted">{s.lbl}</div>
+              <div
+                key={s.lbl}
+                className={`rounded-3xl ${s.tint} p-5 text-center shadow-soft transition-transform hover:-translate-y-1`}
+              >
+                <span
+                  className={`mx-auto grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br ${s.ic} text-white shadow-soft`}
+                >
+                  <s.icon className="h-5 w-5" />
+                </span>
+                <div className="mt-3 font-display text-3xl font-bold text-ink">{s.big}</div>
+                <div className="mt-0.5 text-xs font-semibold text-ink-muted">{s.lbl}</div>
               </div>
             ))}
           </motion.div>
