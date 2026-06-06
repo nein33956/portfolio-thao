@@ -33,7 +33,7 @@ export default function Navbar() {
               <Heart className="h-5 w-5" fill="currentColor" />
             </span>
             <span className="font-display text-lg font-bold text-ink">
-              Portfolio<span className="gradient-text"> Năng lực số</span>
+              Portfolio<span className="gradient-text"> AI và Công nghệ số</span>
             </span>
           </Link>
 

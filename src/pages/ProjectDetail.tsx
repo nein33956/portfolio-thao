@@ -198,7 +198,7 @@ export default function ProjectDetail() {
 
                     {/* Chi tiết nộp bài — gọn 1 dòng */}
                     <p className="border-t border-brand-100 pt-4 text-xs text-ink-muted">
-                      Nộp trên <b className="text-ink-soft">LMS VNU</b> · Học phần Năng lực số ứng dụng
+                      Nộp trên <b className="text-ink-soft">LMS VNU</b> · Học phần AI và Công nghệ số ứng dụng
                     </p>
                   </div>
                 ) : (

@@ -20,7 +20,7 @@ export default function Footer() {
           Cảm ơn bạn đã <span className="gradient-text">ghé thăm!</span> 🌸
         </h2>
         <p className="mx-auto mt-3 max-w-md text-ink-soft">
-          Hy vọng bạn thấy hành trình rèn luyện năng lực số của mình thú vị và truyền cảm hứng.
+          Hy vọng bạn thấy hành trình rèn luyện AI và công nghệ số của mình thú vị và truyền cảm hứng.
           Hẹn gặp lại nhé!
         </p>
         <ul className="mt-7 flex flex-wrap justify-center gap-2.5">
